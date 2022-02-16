@@ -19,7 +19,8 @@ jobs:
       - name: Setup Java JDK
         uses: actions/setup-java@v2.5.0
         with:
-          java-version: 15
+          java-version: 16
+          distribution: temurin
         
       - name: CodeQL Initialze
         uses: github/codeql-action/init@v1
