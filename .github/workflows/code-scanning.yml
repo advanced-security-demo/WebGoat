@@ -1,0 +1,23 @@
+name: "CodeQL"
+
+permissions:
+  contents: read
+  security_events: write
+  
+ jobs:
+  analyze:
+    name: "Analyze"
+    runs-on: ubuntu-latest
+      
+    steps:
+      - name: CodeQL Initialze
+        uses: github/codeql-action/init@v1
+        
+      - name: CodeQL Autobuild
+        uses: github/codeql-action/autobuild@v1
+        
+      - name: CodeQL Analyze
+        uses: github/codeql-action/analyze@v1
+      
+      
+      
