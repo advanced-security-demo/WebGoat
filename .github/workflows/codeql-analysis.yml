@@ -21,9 +21,19 @@ jobs:
           java-version: '17'
           java-package: jdk
           architecture: x64
+          
+      - name: Download benchmark bundle
+        env:
+          GITHUB_TOKEN: ${{ secrets.CODEQL_BENCHMARK_BUNDLE_PAT }}
+        run: |
+          gh release download --pattern 'codeql.tar.gz'
+          mv codeql.tar.gz codeql-bundle.tar.gz
         
       - name: CodeQL Initialize
         uses: github/codeql-action/init@v1
+        with:
+          tools: codeql-bundle.tar.gz
+            
         
       - name: CodeQL Autobuild
         uses: github/codeql-action/autobuild@v1
